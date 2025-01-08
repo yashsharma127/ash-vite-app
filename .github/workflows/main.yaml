@@ -34,6 +34,6 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ secrets.ACR_NAME }}.azurecr.io/test-image:stage
           ${{ secrets.ACR_NAME }}.azurecr.io/test-image:stage-${{ github.sha }}
+          ${{ secrets.ACR_NAME }}.azurecr.io/test-image:stage
 
