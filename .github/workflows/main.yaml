@@ -36,4 +36,5 @@ jobs:
         tags: |
           ${{ secrets.ACR_NAME }}.azurecr.io/test-image:dev
           ${{ secrets.ACR_NAME }}.azurecr.io/test-image:${{ github.sha }}
+          ${{ secrets.ACR_NAME }}.azurecr.io/test-image:stage-${{ github.sha }}
 
