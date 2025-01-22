@@ -19,12 +19,12 @@ jobs:
     - name: Log in to Azure
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS_2 }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    # 2 - Log in to ACR
+    # - Log in to ACR
     - name: Log in to ACR
       run: |
-        az acr login --name ${{ secrets.ACR_NAME_2 }}
+        az acr login --name ${{ secrets.ACR_NAME }}
 
     # Build and push Docker image
     - name: Build and Push Docker Image
@@ -34,5 +34,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ secrets.ACR_NAME_2 }}.azurecr.io/test-image:test
+          ${{ secrets.ACR_NAME }}.azurecr.io/test-image:test
 
