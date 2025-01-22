@@ -21,19 +21,18 @@ jobs:
       with:
         creds: ${{ secrets.TS_WMS_AZURE_CREDENTIAL }}
 
-    # # Log in to Azure Container Registry
-    # - name: Log in to ACR
-    #   run: |
-    #     az acr login --name ${{ secrets.ACR_NAME }}
+    # 2 - Log in to ACR
+    - name: Log in to ACR
+      run: |
+        az acr login --name ${{ secrets.TS_WMS_ACR_NAME }}
 
-    # # Build and push Docker image
-    # - name: Build and Push Docker Image
-    #   uses: docker/build-push-action@v4
-    #   with:
-    #     context: .
-    #     file: ./Dockerfile
-    #     push: true
-    #     tags: |
-    #       ${{ secrets.ACR_NAME }}.azurecr.io/test-image:dev-${{ github.sha }}
-    #       ${{ secrets.ACR_NAME }}.azurecr.io/test-image:dev
+    # Build and push Docker image
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          ${{ secrets.TS_WMS_ACR_NAME }}.azurecr.io/test-image:test
 
