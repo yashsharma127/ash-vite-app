@@ -24,7 +24,7 @@ jobs:
     # 2 - Log in to ACR
     - name: Log in to ACR
       run: |
-        az acr login --name ${{ secrets.ACR_NAME_2 | toLower }}
+        az acr login --name ${{ secrets.ACR_NAME_2 }}
 
     # Build and push Docker image
     - name: Build and Push Docker Image
@@ -34,5 +34,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ secrets.ACR_NAME_2 | toLower }}.azurecr.io/test-image:test
+          $(echo "${{ secrets.ACR_NAME_2 }}" | tr '[:upper:]' '[:lower:]').azurecr.io/test-image:test
 
