@@ -34,5 +34,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          $(echo "${{ secrets.ACR_NAME_2 }}" | tr '[:upper:]' '[:lower:]').azurecr.io/test-image:test
+          ${{ secrets.ACR_NAME_2 }}.azurecr.io/test-image:test
 
